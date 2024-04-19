@@ -5,6 +5,7 @@ import SearchUser from "./components/SearchUser";
 import { useState } from "react";
 import { summonerAccount } from "./hooks/useSummoner";
 import SummonersQuickAccess from "./components/Summoners/SummonersQuickAccess";
+import SummonersList from "./components/Summoners/SummonersList";
 
 function App() {
     const [ curSummonerId, setCurSummonerId ] = useState(""); // SOLO LA RIOT ID del summoner ("nombre/id")
@@ -28,20 +29,20 @@ function App() {
 
                 <Show above="md">
                     <GridItem area={"aside"}>
-                        <SummonersQuickAccess summonersList={summonersList} />
+                        <SummonersList summonersList={summonersList} />
                     </GridItem>
                 </Show>
                 
                 <GridItem area={"main"}>
                     <VStack>
                         <SearchUser summonerSubmit={(summonerId) => setCurSummonerId(summonerId)} />
-                        <SummonerInfo summonerId={curSummonerId} />
+                        <SummonerInfo summonerId={curSummonerId} onAdd={(summoner) => setSummonersList([...summonersList, summoner])} />
                     </VStack>
                 </GridItem>
 
                 <Show above="lg">
                     <GridItem area={"right"}>
-                        area derecha xdxd
+                        <SummonersQuickAccess summonersList={summonersList} />
                     </GridItem>
                 </Show>
             </Grid>
