@@ -11,7 +11,7 @@ const SwitchTheme = () => {
                 onChange={toggleColorMode}
                 colorScheme='pink'>
             </Switch>
-            <Text fontStyle={textStyles.textStyles.title} fontSize={"sm"}>
+            <Text whiteSpace={"nowrap"} fontStyle={textStyles.textStyles.title} fontSize={"sm"}>
                 Dark Mode
             </Text>
         </HStack>
