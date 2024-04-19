@@ -2,8 +2,11 @@ import { Grid, GridItem, Show, VStack } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GridTest from "./components/GridTest";
 import SearchUser from "./components/SearchUser";
+import { useState } from "react";
 
 function App() {
+    const [ curSummonerId, setCurSummonerId ] = useState("KHN Hippo/LAS"); // SOLO LA RIOT ID del summoner ("nombre/id")
+
     return(
         <div>
             <Grid templateAreas={{
@@ -28,8 +31,8 @@ function App() {
                 
                 <GridItem area={"main"}>
                     <VStack>
-                        <SearchUser />
-                        <GridTest></GridTest>
+                        <SearchUser summonerSubmit={(summonerId) => setCurSummonerId(summonerId)} />
+                        <GridTest summonerId={curSummonerId} />
                     </VStack>
                 </GridItem>
 

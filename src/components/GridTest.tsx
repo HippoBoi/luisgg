@@ -1,8 +1,12 @@
 import { Text } from '@chakra-ui/react';
 import useSummoners from '../hooks/useSummoner';
 
-const GridTest = () => {
-    const {summoner, error} = useSummoners();
+interface Props {
+    summonerId: string
+}
+
+const GridTest = ({ summonerId }: Props) => {
+    const {summoner, error} = useSummoners(summonerId); // parametros: (id)
 
     if (error) return(<Text>{error}</Text>);
 
