@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 
 export interface summonerAccount {
     puuid: string,
@@ -8,17 +8,17 @@ export interface summonerAccount {
     tagLine: string,
 };
 
-const useSummoners = (summonerId: string) => {
+const useSummoners = (requestConfig: AxiosRequestConfig, deps?: any[]) => {
     const [summoner, setSummoner] = useState<summonerAccount>({} as summonerAccount);
     const [error, setError] = useState("");
     const [isLoading, setLoading] = useState(false);
-    const [name, tag] = summonerId.split("/");
+    const [name, tag] = requestConfig.params.summonerId.split("/");
 
     useEffect(() => {
         const controller = new AbortController();
 
         setLoading(true);
-        apiClient.get<summonerAccount>(`/riot/riot/account/v1/accounts/by-riot-id/${name}/${tag}`, { signal: controller.signal })
+        apiClient.get<summonerAccount>(`/riot/riot/account/v1/accounts/by-riot-id/${name}/${tag}`, { signal: controller.signal, ...requestConfig })
             .then((res) => {
                 setSummoner(res.data);
                 setLoading(false);
@@ -30,9 +30,7 @@ const useSummoners = (summonerId: string) => {
             })
         
         return () => controller.abort();
-    }, [{ 
-            summonerId
-        }]);
+    }, deps ? [...deps] : []);
 
     return ({ summoner, error, isLoading });
 };

@@ -6,7 +6,7 @@ interface Props {
 }
 
 const GridTest = ({ summonerId }: Props) => {
-    const {summoner, error} = useSummoners(summonerId); // parametros: (id)
+    const {summoner, error} = useSummoners({ params: { summonerId: summonerId } }, [summonerId]); // parametros: (id)
 
     if (error) return(<Text>{error}</Text>);
 
