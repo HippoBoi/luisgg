@@ -2,11 +2,8 @@ import { Grid, GridItem, Show, VStack } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GridTest from "./components/GridTest";
 import SearchUser from "./components/SearchUser";
-import { useState } from "react";
 
 function App() {
-    const [curUserName, setCurUserName] = useState<string>("");
-
     return(
         <div>
             <Grid templateAreas={{

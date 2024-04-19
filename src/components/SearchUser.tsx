@@ -5,7 +5,7 @@ const SearchUser = () => {
     return (
         <VStack>
             <Text style={textStyles.textStyles.title} as={"i"}>
-                    Buscar por Riot ID:
+                    Buscar invocador:
             </Text>
 
             <HStack spacing={"20px"} height={"60px"} justifyContent={"space-between"}>
