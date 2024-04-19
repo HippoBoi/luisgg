@@ -1,11 +1,14 @@
 import { Grid, GridItem, Show, VStack } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-import GridTest from "./components/GridTest";
+import SummonerInfo from "./components/Summoners/SummonerInfo";
 import SearchUser from "./components/SearchUser";
 import { useState } from "react";
+import { summonerAccount } from "./hooks/useSummoner";
+import SummonersQuickAccess from "./components/Summoners/SummonersQuickAccess";
 
 function App() {
-    const [ curSummonerId, setCurSummonerId ] = useState("KHN Hippo/LAS"); // SOLO LA RIOT ID del summoner ("nombre/id")
+    const [ curSummonerId, setCurSummonerId ] = useState(""); // SOLO LA RIOT ID del summoner ("nombre/id")
+    const [ summonersList, setSummonersList ] = useState<summonerAccount[]>([]);
 
     return(
         <div>
@@ -25,14 +28,14 @@ function App() {
 
                 <Show above="md">
                     <GridItem area={"aside"}>
-                        area izquierda
+                        <SummonersQuickAccess summonersList={summonersList} />
                     </GridItem>
                 </Show>
                 
                 <GridItem area={"main"}>
                     <VStack>
                         <SearchUser summonerSubmit={(summonerId) => setCurSummonerId(summonerId)} />
-                        <GridTest summonerId={curSummonerId} />
+                        <SummonerInfo summonerId={curSummonerId} />
                     </VStack>
                 </GridItem>
 

@@ -1,5 +1,5 @@
 import { Text } from '@chakra-ui/react';
-import useSummoners from '../hooks/useSummoner';
+import useSummoners from '../../hooks/useSummoner';
 
 interface Props {
     summonerId: string
