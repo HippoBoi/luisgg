@@ -8,7 +8,7 @@ import SummonersQuickAccess from "./components/Summoners/SummonersQuickAccess";
 import SummonersList from "./components/Summoners/SummonersList";
 
 function App() {
-    const [ curSummonerId, setCurSummonerId ] = useState(""); // SOLO LA RIOT ID del summoner ("nombre/id")
+    const [ curSummonerId, setCurSummonerId ] = useState(""); // SOLO LA RIOT ID ("nombre/id")
     const [ summonersList, setSummonersList ] = useState<summonerAccount[]>([]);
 
     return(
@@ -34,7 +34,7 @@ function App() {
                 </Show>
                 
                 <GridItem area={"main"}>
-                    <VStack>
+                    <VStack paddingBottom={"30px"}>
                         <SearchUser summonerSubmit={(summonerId) => setCurSummonerId(summonerId)} />
                         <SummonerInfo summonerId={curSummonerId} onAdd={(summoner) => setSummonersList([...summonersList, summoner])} />
                     </VStack>
