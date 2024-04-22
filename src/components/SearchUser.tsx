@@ -25,7 +25,7 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                     Buscar invocador:
             </Text>
 
-            <HStack spacing={"20px"} height={"60px"} justifyContent={"space-between"}>
+            <HStack spacing={"20px"} justifyContent={"space-between"}>
                 <Text marginLeft={"20px"} style={textStyles.textStyles.title} as={"i"}>
                     Nombre:
                 </Text>
@@ -36,7 +36,7 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                 placeholder='"Shugoshin..."' />
 
 
-                <Text marginLeft={"40px"} style={textStyles.textStyles.title} as={"i"}>
+                <Text marginLeft={"20px"} style={textStyles.textStyles.title} as={"i"}>
                     TAG:
                 </Text>
 

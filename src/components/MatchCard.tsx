@@ -1,7 +1,6 @@
 import { Button, HStack, Spinner, Text, VStack } from "@chakra-ui/react";
 import useMatch from "../hooks/useMatch";
 import { summonerAccount } from "../hooks/useSummoner";
-import MapLanes from "./MapLanes";
 
 interface Props {
     summoner: summonerAccount,
