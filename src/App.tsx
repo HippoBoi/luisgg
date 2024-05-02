@@ -12,7 +12,9 @@ function App() {
     const [ curSummonerId, setCurSummonerId ] = useState(""); // SOLO LA RIOT ID ("nombre/id")
     const [ summonersList, setSummonersList ] = useState<summonerAccount[]>([]);
 
-    console.log(API_HOST);
+    if (API_HOST) {
+        console.log(API_HOST.toString);
+    }
 
     return(
         <div>
