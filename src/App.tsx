@@ -6,15 +6,10 @@ import { useState } from "react";
 import { summonerAccount } from "./hooks/useSummoner";
 import SummonersQuickAccess from "./components/Summoners/SummonersQuickAccess";
 import SummonersList from "./components/Summoners/SummonersList";
-import { API_HOST } from "./config";
 
 function App() {
     const [ curSummonerId, setCurSummonerId ] = useState(""); // SOLO LA RIOT ID ("nombre/id")
     const [ summonersList, setSummonersList ] = useState<summonerAccount[]>([]);
-
-    if (API_HOST) {
-        console.log(API_HOST.toString);
-    }
 
     return(
         <div>
