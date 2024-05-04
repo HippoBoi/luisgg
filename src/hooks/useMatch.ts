@@ -42,6 +42,6 @@ export interface matchBody {
     info: gameInfo
 }
 
-const useMatch = (matchId: string) => useData<matchBody>(`/riot/lol/match/v5/matches/${matchId}`);
+const useMatch = (matchId: string) => useData<matchBody>(`/riot/lol/match/v5/matches/${matchId}`, "match");
 
 export default useMatch;
