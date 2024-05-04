@@ -11,7 +11,7 @@ const SummonerInfo = ({ summonerId, onAdd }: Props) => {
     const { data: summoner, error, isLoading } = useSummoners(summonerId);
 
     if (isLoading) return <Spinner></Spinner>
-    if (!summoner.puuid) return <Text></Text>;
+    if (!summoner) return <Text></Text>;
     if (error) return(<Text>{error}</Text>);
 
     return (
@@ -20,11 +20,15 @@ const SummonerInfo = ({ summonerId, onAdd }: Props) => {
                 {summoner.gameName ? "Investigando a " + summoner.gameName : "Invocador no encontrado."}
             </Text>
 
-            <SummonerGameList summoner={summoner}></SummonerGameList>
+            {summoner.gameName && (
+                <>
+                    <SummonerGameList summoner={summoner}></SummonerGameList>
 
-            <Button marginX={"20px"} onClick={() => onAdd(summoner)}>
-                Añadir
-            </Button>
+                    <Button marginX={"20px"} onClick={() => onAdd(summoner)}>
+                        Añadir
+                    </Button>
+                </>
+            )}
         </Stack>
     );
 }

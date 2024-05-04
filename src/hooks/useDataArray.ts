@@ -11,7 +11,7 @@ const useDataArray = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, d
         const controller = new AbortController();
 
         setLoading(true);
-        apiClient.get<T[]>(endpoint, { signal: controller.signal, ...requestConfig })
+        apiClient.riotInstance.get<T[]>(endpoint, { signal: controller.signal, ...requestConfig })
             .then((res) => {
                 setData(res.data);
                 setLoading(false);

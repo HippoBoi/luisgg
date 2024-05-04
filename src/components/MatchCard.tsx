@@ -28,7 +28,8 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
 
     let playerPos = match.metadata.participants.indexOf(summoner.puuid);
     let playerInfo = match.info.participants[playerPos];
-    console.log(match.info);
+    if (!playerInfo) return(<Spinner></Spinner>);
+    console.log(playerInfo.riotIdGameName);
 
     if (infoOpen) {
         return (
