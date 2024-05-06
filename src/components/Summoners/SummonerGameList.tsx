@@ -1,6 +1,6 @@
 import { Card, CardBody, List, ListItem, Spinner } from '@chakra-ui/react'
 import MatchCard from '../MatchHistory/MatchCard'
-import { summonerAccount } from '../../hooks/useSummoner'
+import { summonerAccount } from './useSummoner'
 import useGames from '../../hooks/useGames'
 import { useState } from 'react'
 

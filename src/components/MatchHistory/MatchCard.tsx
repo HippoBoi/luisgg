@@ -1,6 +1,6 @@
 import { Button, HStack, Spinner, Text, VStack } from "@chakra-ui/react";
 import useMatch from "../../hooks/useMatch";
-import { summonerAccount } from "../../hooks/useSummoner";
+import { summonerAccount } from "../Summoners/useSummoner";
 import { useState } from "react";
 import ChampionIcon from "../ChampionIcon";
 import MapLanes from "./MapLanes";
@@ -38,7 +38,7 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
     console.log(playerInfo.riotIdGameName);
 
     return (
-        <Link to={`/match/${summoner.gameName}/${matchId}`}>
+        <Link to={`/match/${matchId}`}>
         <Button 
             marginX={"30px"}
             height={"50px"} 

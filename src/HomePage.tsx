@@ -1,28 +1,12 @@
-import { Grid, GridItem, VStack } from "@chakra-ui/react";
-import SummonerInfo from "./components/Summoners/SummonerInfo";
-import { useContext } from "react";
-import summonerIdContext from "./components/Summoners/SummonerIdContext";
-
+import { Text, VStack } from "@chakra-ui/react";
+// Busca un invocador de cualquier región introduciendo su nombre de invocador y Riot ID.
 function App() {
-    const { summonerId: curSummonerId } = useContext(summonerIdContext);
-
     return(
-        <div>
-            <Grid templateAreas={{
-                base: `"main"`,
-
-                md: `"aside main"`,
-                    
-                lg: `"aside main right"`
-            }}>
+        <VStack marginY={"60px"}>
+            <Text as={"b"} fontSize={"2xl"}> 
                 
-                <GridItem area={"main"}>
-                    <VStack paddingBottom={"30px"}>
-                        <SummonerInfo summonerId={curSummonerId} />
-                    </VStack>
-                </GridItem>
-            </Grid>
-        </div>
+            </Text>
+        </VStack>
     );
 }
 

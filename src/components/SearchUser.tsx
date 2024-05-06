@@ -20,7 +20,7 @@ const SearchUser = ({ summonerSubmit }: Props) => {
 
     return (
         <form onSubmit={(event) => submitData(event)}>
-        <VStack>
+        <VStack marginTop={"-70px"}>
             <Text style={textStyles.textStyles.title} as={"i"}>
                     Buscar invocador:
             </Text>

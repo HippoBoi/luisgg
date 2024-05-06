@@ -6,10 +6,11 @@ const MatchPage = () => {
     const params = useParams();
 
     return (
-        <HStack justifyContent={"space-between"}>
+        <HStack justifyContent={"space-between"} marginTop={"10px"}>
+            <Text>data data data data</Text>
             <Text>Página del match</Text>
             <Text style={textStyles.textStyles.title}>
-                {"Investigando a " + params.gameName}
+                {"Investigando a " + params.matchId}
             </Text>
         </HStack>
     )

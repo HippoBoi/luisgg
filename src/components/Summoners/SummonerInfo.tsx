@@ -1,20 +1,25 @@
-import { Spinner, Stack, Text } from '@chakra-ui/react';
-import useSummoners from '../../hooks/useSummoner';
+import { Spinner, Text, VStack } from '@chakra-ui/react';
+import useSummoners from './useSummoner';
 import SummonerGameList from './SummonerGameList';
+import { useParams } from 'react-router-dom';
 
-interface Props {
-    summonerId: string,
-}
+const SummonerInfo = () => {
+    const gameName = useParams().gameName;
+    const tag = useParams().tag;
 
-const SummonerInfo = ({ summonerId }: Props) => {
-    const { data: summoner, error, isLoading } = useSummoners(summonerId);
+    const { data: summoner, error, isLoading } = useSummoners(gameName, tag);
 
-    if (isLoading) return <Spinner></Spinner>
+    if (isLoading) return (
+        <VStack>
+            <Spinner />
+        </VStack>
+    );
+
     if (!summoner) return <Text></Text>;
     if (error) return(<Text>{error}</Text>);
 
     return (
-        <Stack>
+        <VStack>
             <Text as={"b"} fontSize={"2xl"}> 
                 {summoner.gameName ? "Investigando a " + summoner.gameName : "Invocador no encontrado."}
             </Text>
@@ -24,7 +29,7 @@ const SummonerInfo = ({ summonerId }: Props) => {
                     <SummonerGameList summoner={summoner}></SummonerGameList>
                 </>
             )}
-        </Stack>
+        </VStack>
     );
 }
 

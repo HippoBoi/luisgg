@@ -1,6 +1,6 @@
 import { VStack, Text, List, ListItem } from "@chakra-ui/react";
 import textStyles from "../../TextStyles";
-import { summonerAccount } from "../../hooks/useSummoner";
+import { summonerAccount } from "./useSummoner";
 
 interface Props {
     summonersList: summonerAccount[]

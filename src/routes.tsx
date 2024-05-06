@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import MatchPage from "./components/MatchAnalysis/MatchPage";
+//import MatchPage from "./components/MatchAnalysis/MatchPage";
 import Layout from "./Layout";
 import HomePage from "./HomePage";
-import NavBar from "./components/NavBar";
+import SummonerInfo from "./components/Summoners/SummonerInfo";
+import MatchPage from "./components/MatchAnalysis/MatchPage";
 
 const router = createBrowserRouter([
     { 
@@ -11,12 +12,10 @@ const router = createBrowserRouter([
         children: [
             { path: "", element: <HomePage /> },
             { 
-                path: "match/:gameName", 
-                element: <MatchPage />,
-                children: [
-                    { path: ":gameId", element: <NavBar /> }
-                ]
-            }
+                path: "summoner/:gameName/:tag",
+                element: <SummonerInfo />
+            },
+            { path: "/match/:matchId", element: <MatchPage /> }
         ]
     }
 ]);
