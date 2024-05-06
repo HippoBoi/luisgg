@@ -4,6 +4,7 @@ import { summonerAccount } from "../../hooks/useSummoner";
 import { useState } from "react";
 import ChampionIcon from "../ChampionIcon";
 import MapLanes from "./MapLanes";
+import { Link } from "react-router-dom";
 
 interface Props {
     summoner: summonerAccount,
@@ -37,26 +38,28 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
     console.log(playerInfo.riotIdGameName);
 
     return (
+        <Link to={`/match/${summoner.gameName}/${matchId}`}>
         <Button 
             marginX={"30px"}
             height={"50px"} 
             colorScheme={playerInfo.win === true ? "green" : "red"}
             onClick={onClick}>
-        <HStack>
-            <ChampionIcon champion={playerInfo.championName}></ChampionIcon>
-        <VStack>
             <HStack>
-                <Text>
-                    {playerInfo.kills + " / " + playerInfo.deaths + " / " + playerInfo.assists}
-                </Text>
+                <ChampionIcon champion={playerInfo.championName}></ChampionIcon>
+            <VStack>
+                <HStack>
+                    <Text>
+                        {playerInfo.kills + " / " + playerInfo.deaths + " / " + playerInfo.assists}
+                    </Text>
+                </HStack>
+                <HStack>
+                    <MapLanes teamPos={playerInfo.teamPosition} />
+                </HStack>
+            </VStack>
+                <Text>{match.info.gameMode}</Text>
             </HStack>
-            <HStack>
-                <MapLanes teamPos={playerInfo.teamPosition} />
-            </HStack>
-        </VStack>
-            <Text>{match.info.gameMode}</Text>
-        </HStack>
         </Button>
+        </Link>
     );
 }
 
