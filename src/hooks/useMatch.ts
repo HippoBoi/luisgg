@@ -1,11 +1,13 @@
 import useData from "./useData";
 
-interface participantInfo {
+export interface participantInfo {
     championName: string,
     riotIdGameName: string,
     riotIdTagline: string,
+    puuid: string,
     teamPosition: string,
     individualPosition: string,
+    teamId: number,
     neutralMinionsKilled: number,
     totalMinionsKilled: number,
     item0: number,
@@ -15,10 +17,20 @@ interface participantInfo {
     item4: number,
     item5: number,
     item6: number,
+    spell4Casts: number,
     goldEarned: number,
+    goldSpent: number,
     kills: number,
+    doubleKills: number,
+    tripleKills: number,
+    quadraKills: number,
+    pentaKills: number,
+    dragonKills: number,
     deaths: number,
     assists: number,
+    timeCCingOthers: number,
+    firstBloodKill: boolean,
+    firstTowerKill: boolean,
     win: boolean
 }
 
@@ -32,6 +44,7 @@ interface gameInfo {
     gameDuration: number,
     gameId: number,
     queueId: number,
+    endOfGameResult: string,
     gameMode: string,
     gameType: string,
     platformId: string,
@@ -43,6 +56,6 @@ export interface matchBody {
     info: gameInfo
 }
 
-const useMatch = (matchId: string) => useData<matchBody>(`/riot/lol/match/v5/matches/${matchId}`);
+const useMatch = (matchId: string | undefined) => useData<matchBody>(`/riot/lol/match/v5/matches/${matchId}`);
 
 export default useMatch;

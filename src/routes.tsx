@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout";
 import HomePage from "./HomePage";
 import SummonerInfo from "./components/Summoners/SummonerInfo";
-import MatchPage from "./components/MatchAnalysis/MatchPage";
+import MatchPage from "./components/Matches/MatchPage";
 
 const router = createBrowserRouter([
     { 
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
                 path: "summoner/:gameName/:tag",
                 element: <SummonerInfo />
             },
-            { path: "/match/:matchId", element: <MatchPage /> }
+            { path: "/match/:gameName/:tag/:matchId", element: <MatchPage /> }
         ]
     }
 ]);

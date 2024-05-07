@@ -16,7 +16,6 @@ const Layout = () => {
     return (
         <SummonerIdContext.Provider value={{ summonerId: curSummonerId, dispatch: summonerDispatch }}>
             <NavBar />
-
             <SearchUser summonerSubmit={(summonerId) => onSearch(summonerId)} />
 
             <div>

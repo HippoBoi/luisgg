@@ -1,4 +1,4 @@
-import { Button, HStack, Spinner, Text, VStack } from "@chakra-ui/react";
+import { Card, HStack, Spinner, Text, VStack } from "@chakra-ui/react";
 import useMatch from "../../hooks/useMatch";
 import { summonerAccount } from "../Summoners/useSummoner";
 import { useState } from "react";
@@ -38,11 +38,13 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
     console.log(playerInfo.riotIdGameName);
 
     return (
-        <Link to={`/match/${matchId}`}>
-        <Button 
-            marginX={"30px"}
+        <Link to={`/match/${summoner.gameName}/${summoner.tagLine}/${matchId}`}>
+        <Card 
+            width={"100%"}
+            as={"button"}
+            bgColor={playerInfo.win === true ? "purple.600" : "pink.700"}
             height={"50px"} 
-            colorScheme={playerInfo.win === true ? "green" : "red"}
+            _hover={playerInfo.win === true ? { backgroundColor: "blue.300" } : { backgroundColor: "red.300" }}
             onClick={onClick}>
             <HStack>
                 <ChampionIcon champion={playerInfo.championName}></ChampionIcon>
@@ -58,7 +60,7 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
             </VStack>
                 <Text>{match.info.gameMode}</Text>
             </HStack>
-        </Button>
+        </Card>
         </Link>
     );
 }
