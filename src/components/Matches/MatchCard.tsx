@@ -1,5 +1,5 @@
 import { Card, HStack, Spinner, Text, VStack } from "@chakra-ui/react";
-import useMatch from "../../hooks/useMatch";
+import useMatch from "./useMatch";
 import { summonerAccount } from "../Summoners/useSummoner";
 import { useState } from "react";
 import ChampionIcon from "../ChampionIcon";

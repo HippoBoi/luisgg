@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom";
 const NavBar = () => {
     const navigate = useNavigate();
     const resetPage = () => {
-        console.log("reset");
+        
         navigate("/");
     }
 
     return (
-        <HStack padding={5} marginBottom={"20px"} justifyContent={"space-between"}>
+        <HStack padding={5} marginBottom={"40px"} justifyContent={"space-between"}>
             <HStack spacing={-1}>
                 <Button 
                     bgImage={logo} 
@@ -24,7 +24,16 @@ const NavBar = () => {
                 <Image src={logo} boxSize={"60px"}></Image>
             </HStack>
 
-            <Text>la página de las páginas</Text>
+            <Text 
+                marginRight={"60px"} 
+                marginBottom={"10px"}
+                borderBottom={"1px solid"}
+                whiteSpace={"nowrap"}
+                style={textStyles.textStyles.title} 
+                color={"purple.200"} 
+                fontSize={"60px"}>
+                no más monadas
+            </Text>
             
             <SwitchTheme></SwitchTheme>
         </HStack>

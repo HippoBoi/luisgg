@@ -1,7 +1,7 @@
-import { Center, HStack, Spinner, Text } from '@chakra-ui/react'
+import { Center, HStack, Spinner, Text, VStack } from '@chakra-ui/react'
 import textStyles from '../../TextStyles'
 import { useParams } from 'react-router-dom'
-import useMatch from '../../hooks/useMatch';
+import useMatch from './useMatch';
 import MatchPlayersInfo from './MatchPlayersInfo';
 import useSummoners from '../Summoners/useSummoner';
 
@@ -24,10 +24,13 @@ const MatchPage = () => {
 
     let playerPos = match.metadata.participants.indexOf(summoner.puuid);
     let playerInfo = match.info.participants[playerPos];
+    let matchMinutes = Math.floor((match.info.gameDuration % 3600) / 60);
+    let matchSeconds = match.info.gameDuration % 60;
     
     return (
         <>
         <Center>
+            <VStack>
             <Text 
                 style={textStyles.textStyles.title} 
                 fontSize={"45px"} 
@@ -36,10 +39,14 @@ const MatchPage = () => {
                 color={playerInfo.win ? "purple.200" : "pink.400"}>
                 {playerInfo.win ? "Victoria" : "Derrota"}
             </Text>
+            <Text color={"gray.300"}>
+                {"Duración: " + matchMinutes + ":" + matchSeconds}
+            </Text>
+            </VStack>
         </Center>
         <HStack justifyContent={"space-between"} marginTop={"10px"}>
             <Text> hihihihi </Text>
-            <HStack>
+            <HStack spacing={"20px"}>
                 <MatchPlayersInfo players={match.info.participants} teamId={100} />
                 <MatchPlayersInfo players={match.info.participants} teamId={200} />
             </HStack>

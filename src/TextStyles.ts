@@ -5,6 +5,12 @@ const textStyles = extendTheme({
         title: {
             fontSize: ["xl"],
             fontWeight: ["bold"]
+        },
+        cardBody: {
+            fontSize: ["13px"],
+            fontStyle: ["italic"],
+            fontWeight: ["bold"],
+            whiteSpace: "nowrap"
         }
     }
 });

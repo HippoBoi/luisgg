@@ -1,4 +1,4 @@
-import useData from "./useData";
+import useData from "../../hooks/useData";
 
 export interface participantInfo {
     championName: string,
@@ -10,6 +10,7 @@ export interface participantInfo {
     teamId: number,
     neutralMinionsKilled: number,
     totalMinionsKilled: number,
+    totalDamageDealtToChampions: number,
     item0: number,
     item1: number,
     item2: number,

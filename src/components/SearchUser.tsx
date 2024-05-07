@@ -1,4 +1,4 @@
-import { Button, HStack, Input, Text, VStack } from "@chakra-ui/react";
+import { Button, HStack, Input, InputGroup, InputRightElement, Text, VStack } from "@chakra-ui/react";
 import textStyles from "../TextStyles";
 import { FormEvent, useRef } from "react";
 
@@ -10,17 +10,24 @@ const SearchUser = ({ summonerSubmit }: Props) => {
     const nameRef = useRef<HTMLInputElement>(null);
     const tagRef = useRef<HTMLInputElement>(null);
 
+    const resetForm = (resetName: boolean, resetTag: boolean) => {
+        if (nameRef.current && tagRef.current) {
+            resetName && (nameRef.current.value = "");
+            resetTag && (tagRef.current.value = "");
+        }
+    }
     const submitData = (event: FormEvent) => {
         event.preventDefault();
 
         if (nameRef.current && tagRef.current) {
             summonerSubmit(nameRef.current.value + "/" + tagRef.current.value);
+            //resetForm(true, true);
         }
     };
 
     return (
         <form onSubmit={(event) => submitData(event)}>
-        <VStack marginTop={"-40px"}>
+        <VStack marginTop={"-40px"} marginBottom={"30px"}>
             <Text style={textStyles.textStyles.title} as={"i"}>
                     Buscar invocador:
             </Text>
@@ -30,21 +37,31 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                     Nombre:
                 </Text>
 
-                <Input 
-                ref={nameRef}
-                variant={"filled"} 
-                placeholder='"Shugoshin..."' />
+                <InputGroup>
+                    <Input 
+                    paddingRight={"20px"}
+                    ref={nameRef}
+                    variant={"filled"} 
+                    placeholder='"KHN Clean..."' />
+                    <InputRightElement>
+                        <Button fontSize={"13px"} color={"gray"} bg={"transparent"} onClick={() => resetForm(true, false)}>X</Button>
+                    </InputRightElement>
+                </InputGroup>
 
 
                 <Text marginLeft={"20px"} style={textStyles.textStyles.title} as={"i"}>
                     TAG:
                 </Text>
 
-                <Input 
-                ref={tagRef}
-                marginRight={"60px"}
-                variant={"filled"} 
-                placeholder='"KHNS..."' />
+                <InputGroup marginRight={"90px"}>
+                    <Input 
+                    ref={tagRef}
+                    variant={"filled"} 
+                    placeholder='"KHN..."' />
+                    <InputRightElement>
+                        <Button fontSize={"13px"} color={"gray"} bg={"transparent"} onClick={() => resetForm(false, true)}>X</Button>
+                    </InputRightElement>
+                </InputGroup>
             </HStack>
 
             <Button type="submit">Search</Button>
