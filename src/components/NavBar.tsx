@@ -3,9 +3,11 @@ import textStyles from "../TextStyles";
 import logo from '../assets/images/luchoLogo.jpg';
 import SwitchTheme from "./SwitchTheme";
 import { useNavigate } from "react-router-dom";
+import LanguageList from "./LanguageList";
 
 const NavBar = () => {
     const isScreenSmall = useBreakpointValue({ base: true, lg: false });
+    const isEvenSmaller = useBreakpointValue({ sm: true, base: false });
     const navigate = useNavigate();
     const resetPage = () => {
         navigate("/");
@@ -22,7 +24,9 @@ const NavBar = () => {
                         onClick={resetPage}>
                         Luis.GG
                     </Button>
-                    <Image src={logo} boxSize={"60px"}></Image>
+                    {isEvenSmaller && (
+                        <Image src={logo} boxSize={"60px"}></Image>
+                    )}
                 </HStack>
             </Box>
 
@@ -40,6 +44,10 @@ const NavBar = () => {
                 </Box>
             )}
             
+            <Box position={"absolute"} right={isEvenSmaller ? "20%" : "30%"} marginTop={"5px"}>
+                <LanguageList />
+            </Box>
+
             <Box position={"absolute"} right={"1%"} marginTop={"20px"}>
                 <SwitchTheme></SwitchTheme>
             </Box>
