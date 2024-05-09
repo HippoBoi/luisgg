@@ -25,7 +25,7 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
                         {blueTeam && 
                         (
                         <>
-                            {!isScreenSmall && (<SummonerAchievments player={player} />)}
+                            {!isScreenSmall && (<SummonerAchievments allPlayers={players} player={player} />)}
                             <SummonerBuild player={player} />
                         </>
                         )}
@@ -44,7 +44,7 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
                                 {!blueTeam && <Text as={"i"} whiteSpace={"nowrap"} fontSize={isScreenSmall ? smallFontSize : fontSize}>
                                     {player.riotIdGameName}
                                 </Text>}
-                                <ChampionIcon champion={player.championName} border={"medium"} />
+                                <ChampionIcon champion={player.championName} border={"medium"} size={isScreenSmall ? 25 : 50} />
                                 {blueTeam && <Text as={"i"} whiteSpace={"nowrap"} fontSize={isScreenSmall ? smallFontSize : fontSize}>
                                     {player.riotIdGameName}
                                 </Text>}
@@ -118,7 +118,7 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
                         (
                             <>
                             <SummonerBuild player={player} />
-                            {!isScreenSmall && (<SummonerAchievments player={player} />)}
+                            {!isScreenSmall && (<SummonerAchievments allPlayers={players} player={player} />)}
                             </>
                         )}
                         </HStack>

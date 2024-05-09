@@ -10,6 +10,7 @@ const MatchPage = () => {
     const summonerName = useParams().gameName;
     const summonerTag = useParams().tag;
 
+
     const { data: summoner, error: sumError, isLoading: isSummonerLoading } = useSummoners(summonerName, summonerTag);
     const { data: match, error, isLoading } = useMatch(matchId);
 
