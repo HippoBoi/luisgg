@@ -44,8 +44,10 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
             width={"100%"}
             as={"button"}
             bgColor={playerInfo.win === true ? "purple.600" : "pink.700"}
-            minHeight={"50px"} 
-            maxHeight={"80px"}
+            minWidth={"250px"}
+            maxWidth={"250px"}
+            minHeight={"60px"} 
+            maxHeight={"100px"}
             _hover={playerInfo.win === true ? { backgroundColor: "blue.300" } : { backgroundColor: "red.300" }}
             onClick={onClick}>
             <HStack>

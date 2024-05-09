@@ -30,9 +30,11 @@ const SummonerGameList = ({ summoner }: Props) => {
                         </ListItem>
                     )
                 ))}
-                <Center>
-                    <Button onClick={() => setMaxGames(maxGames + 5)}>Mostrar Más</Button>
-                </Center>
+                {maxGames < 20 && (
+                    <Center>
+                        <Button onClick={() => setMaxGames(maxGames + 5)}>Mostrar Más</Button>
+                    </Center>
+                )}
                 </List>
             </CardBody>
         </Card>

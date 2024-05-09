@@ -41,12 +41,6 @@ const SummonerInfo = () => {
                     )}
                 </VStack>
             </Box>
-
-            {!isScreenSmall && (
-                <Box position="absolute" right="0">
-                    <div>Elemento a la derecha</div>
-                </Box>
-            )}
         </Box>
     );
 }

@@ -3,6 +3,7 @@ import { summonerAccount } from "./useSummoner";
 import useChampionMastery from "../Champions/useChampionMastery";
 import useChampions from "../Champions/useChampions";
 import { useState } from "react";
+import ChampionInfoCard from "../Champions/ChampionInfoCard";
 
 interface Props {
     summoner: summonerAccount
@@ -22,15 +23,15 @@ const SummonerMasteryList = ({ summoner }: Props) => {
     let championNames = Object.keys(champions.data);
 
     return (
-        <VStack>
+        <VStack marginBottom={"30px"}>
         <Text as={"b"}>Mejores Champs:</Text>
-        <List>
+        <List spacing={5} alignContent={"start"}>
             {masteries.map((mastery, index) => (
-                index < 10 &&
+                index < 6 &&
                 championNames.map((champ) => (
                     parseInt(champions.data[champ].key) === mastery.championId &&
                     <ListItem>
-                        <Text>{champions.data[champ].name}</Text>
+                        <ChampionInfoCard champion={champions.data[champ]} mastery={mastery} />
                     </ListItem>
                 ))
             ))}

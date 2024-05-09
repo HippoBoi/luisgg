@@ -10,7 +10,7 @@ interface championStats {
     spellblock: number;
 }
 
-interface championBody {
+export interface championBody {
     id: string;
     key: string;
     name: string;
