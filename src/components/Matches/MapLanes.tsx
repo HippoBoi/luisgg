@@ -5,9 +5,10 @@ interface Props {
     teamPos: string;
     accent?: "b" | "i"
     color?: string;
+    size?: string;
 }
 
-const MapLanes = ({ teamPos, accent = "i", color = "" }: Props) => {
+const MapLanes = ({ teamPos, accent = "i", color = "", size = "20px" }: Props) => {
     const [position, setPosition] = useState("");
 
     useEffect(() => {
@@ -19,7 +20,7 @@ const MapLanes = ({ teamPos, accent = "i", color = "" }: Props) => {
     }, [teamPos])
 
     return (
-        <Text as={accent} color={color}>{position}</Text>
+        <Text fontSize={size} as={accent} color={color}>{position}</Text>
     );
 }
 

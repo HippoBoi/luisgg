@@ -1,4 +1,4 @@
-import { Button, HStack, Input, InputGroup, InputRightElement, Text, VStack } from "@chakra-ui/react";
+import { Button, HStack, Input, InputGroup, InputRightElement, Text, VStack, useBreakpointValue } from "@chakra-ui/react";
 import textStyles from "../TextStyles";
 import { FormEvent, useRef } from "react";
 
@@ -9,6 +9,7 @@ interface Props {
 const SearchUser = ({ summonerSubmit }: Props) => {
     const nameRef = useRef<HTMLInputElement>(null);
     const tagRef = useRef<HTMLInputElement>(null);
+    const isScreenSmall = useBreakpointValue({ base: true, lg: false });
 
     const resetForm = (resetName: boolean, resetTag: boolean) => {
         if (nameRef.current && tagRef.current) {
@@ -32,20 +33,21 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                     Buscar invocador:
             </Text>
 
-            <HStack spacing={"20px"} justifyContent={"space-between"}>
-                <Text marginLeft={"20px"} style={textStyles.textStyles.title} as={"i"}>
+            <HStack marginLeft={"10px"} spacing={"15px"} justifyContent={"space-between"}>
+                <Text style={textStyles.textStyles.title} as={"i"}>
                     Nombre:
                 </Text>
 
                 <InputGroup>
                     <Input 
-                    paddingRight={"20px"}
                     ref={nameRef}
                     variant={"filled"} 
                     placeholder='"KHN Clean..."' />
-                    <InputRightElement>
-                        <Button fontSize={"13px"} color={"gray"} bg={"transparent"} onClick={() => resetForm(true, false)}>X</Button>
-                    </InputRightElement>
+                    {!isScreenSmall && (
+                        <InputRightElement>
+                            <Button fontSize={"13px"} color={"gray"} bg={"transparent"} onClick={() => resetForm(true, false)}>X</Button>
+                        </InputRightElement>
+                    )}
                 </InputGroup>
 
 
@@ -58,9 +60,11 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                     ref={tagRef}
                     variant={"filled"} 
                     placeholder='"KHN..."' />
-                    <InputRightElement>
-                        <Button fontSize={"13px"} color={"gray"} bg={"transparent"} onClick={() => resetForm(false, true)}>X</Button>
-                    </InputRightElement>
+                    {!isScreenSmall && (
+                        <InputRightElement>
+                            <Button fontSize={"13px"} color={"gray"} bg={"transparent"} onClick={() => resetForm(false, true)}>X</Button>
+                        </InputRightElement>
+                    )}
                 </InputGroup>
             </HStack>
 

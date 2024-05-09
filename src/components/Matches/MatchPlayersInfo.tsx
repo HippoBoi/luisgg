@@ -58,6 +58,7 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
                                     borderColor={blueTeam ? "purple.300" : "pink.400"}
                                     borderWidth="1px"
                                     borderRadius="md"
+                                    whiteSpace={"nowrap"}
                                     fontSize={isScreenSmall ? smallFontSize : fontSize}>
                                     {player.kills + " / " + player.deaths + " / " + player.assists}
                                 </Text>)}
@@ -65,6 +66,7 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
                                 <Text 
                                     as={"i"}
                                     color={blueTeam ? "purple.100" : "pink.200"}
+                                    whiteSpace={"nowrap"}
                                     fontSize={isScreenSmall ? smallFontSize : fontSize}>
                                     {"CS: " + (player.neutralMinionsKilled + player.totalMinionsKilled)}
                                 </Text>
@@ -76,6 +78,7 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
                                     borderColor={blueTeam ? "purple.300" : "pink.400"}
                                     borderWidth="1px"
                                     borderRadius="md"
+                                    whiteSpace={"nowrap"}
                                     fontSize={isScreenSmall ? smallFontSize : fontSize}>
                                     {player.kills + " / " + player.deaths + " / " + player.assists}
                                 </Text>)}
@@ -88,7 +91,8 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
                                 <MapLanes 
                                     teamPos={player.teamPosition} 
                                     accent="b" 
-                                    color="blue.200">
+                                    color="blue.200"
+                                    size={isScreenSmall ? smallFontSize : fontSize}>
                                 </MapLanes>
                             </HStack>
                             <HStack>

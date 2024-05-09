@@ -51,11 +51,11 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
             _hover={
                 playerInfo.win === true ? { 
                     transform: "scale(1.10)", 
-                    transition: "transform .025s ease-in",
+                    transition: "transform .01s ease-in",
                     backgroundColor: "blue.300" 
                 } : { 
                     transform: "scale(1.10)", 
-                    transition: "transform .025s ease-in",
+                    transition: "transform .01s ease-in",
                     backgroundColor: "red.300" 
                 }
             }
