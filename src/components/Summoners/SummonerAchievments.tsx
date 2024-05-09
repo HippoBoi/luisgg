@@ -2,7 +2,7 @@ import { Card, CardBody, VStack, Text } from '@chakra-ui/react';
 import textStyles from '../../TextStyles';
 import { participantInfo } from '../Matches/useMatch';
 import { useEffect, useState } from 'react';
-import getTopStats from '../getTopStats';
+import getTopStats from '../../services/getTopStats';
 
 interface Props {
     allPlayers: participantInfo[];

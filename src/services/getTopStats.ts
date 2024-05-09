@@ -1,4 +1,4 @@
-import { participantInfo } from "./Matches/useMatch";
+import { participantInfo } from "../components/Matches/useMatch";
 
 const getTopDmg = (players: participantInfo[]) => {
     let maxDmg = 0;
