@@ -19,7 +19,10 @@ const ChampionInfoCard = ({ champion, mastery }: Props) => {
         <Card 
             onMouseEnter={() => setMouseHovering(true)}
             onMouseLeave={() => setMouseHovering(false)}
-            width={mouseHovering ? "200px" : "150px"}
+            _hover={{ 
+                transform: "scale(1.10)",
+                transition: "transform .1s ease-out"
+             }}
             bgColor={mouseHovering ? "#6c479d" : "#402757"}>
             <VStack>
                 <Text as={"b"}>
@@ -27,7 +30,10 @@ const ChampionInfoCard = ({ champion, mastery }: Props) => {
                 </Text>
                 <ChampionIcon champion={champion.name} />
                 <HStack>
-                <Text color={"yellow.200"}>{numberWithDots(mastery.championPoints)}</Text>
+                <Text 
+                    color={"yellow.200"}>
+                    {numberWithDots(mastery.championPoints)}
+                </Text>
                 <Text>{" puntos."}</Text>
                 </HStack>
             </VStack>

@@ -7,7 +7,7 @@ interface Props {
     extension?: string;
 }
 
-const ItemIcon = ({ itemId, size = "20px", patch = "14.9.1", extension = ".png" }: Props) => {
+const ItemIcon = ({ itemId, size = "25px", patch = "14.9.1", extension = ".png" }: Props) => {
     if (itemId === 0) {
         return(<Image></Image>)
     }

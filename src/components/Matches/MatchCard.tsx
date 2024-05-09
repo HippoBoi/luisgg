@@ -48,13 +48,23 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
             maxWidth={"250px"}
             minHeight={"60px"} 
             maxHeight={"100px"}
-            _hover={playerInfo.win === true ? { backgroundColor: "blue.300" } : { backgroundColor: "red.300" }}
+            _hover={
+                playerInfo.win === true ? { 
+                    transform: "scale(1.10)", 
+                    transition: "transform .025s ease-in",
+                    backgroundColor: "blue.300" 
+                } : { 
+                    transform: "scale(1.10)", 
+                    transition: "transform .025s ease-in",
+                    backgroundColor: "red.300" 
+                }
+            }
             onClick={onClick}>
             <HStack>
                 <ChampionIcon champion={playerInfo.championName}></ChampionIcon>
             <VStack>
                 <HStack>
-                    <Text>
+                    <Text whiteSpace={"nowrap"}>
                         {playerInfo.kills + " / " + playerInfo.deaths + " / " + playerInfo.assists}
                     </Text>
                     <SummonerBuild player={playerInfo} />

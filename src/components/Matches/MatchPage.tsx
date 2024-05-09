@@ -1,4 +1,4 @@
-import { Center, HStack, Spinner, Text, VStack } from '@chakra-ui/react'
+import { Box, Center, Spinner, Text, VStack } from '@chakra-ui/react'
 import textStyles from '../../TextStyles'
 import { useParams } from 'react-router-dom'
 import useMatch from './useMatch';
@@ -42,14 +42,14 @@ const MatchPage = () => {
             </Text>
             </VStack>
         </Center>
-        <HStack justifyContent={"space-between"} marginTop={"10px"}>
-            <Text> -- </Text>
-            <HStack spacing={"20px"}>
+        <Box position={"relative"}>
+            <Box position={"absolute"} left={"0%"}>
                 <MatchPlayersInfo players={match.info.participants} teamId={100} />
+            </Box>
+            <Box position={"absolute"} right={"0%"}>
                 <MatchPlayersInfo players={match.info.participants} teamId={200} />
-            </HStack>
-            <Text> -- </Text>
-        </HStack>
+            </Box>
+        </Box>
         </>
     )
 }

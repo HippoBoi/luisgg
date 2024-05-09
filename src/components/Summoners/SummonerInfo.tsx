@@ -23,7 +23,7 @@ const SummonerInfo = () => {
     return (
         <Box position={"relative"}>
             {!isScreenSmall && (
-                <Box position="absolute" left="0">
+                <Box position="absolute" left="1%">
                     <SummonerMasteryList summoner={summoner} />
                 </Box>
             )}
