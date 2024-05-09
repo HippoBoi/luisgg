@@ -1,4 +1,4 @@
-import { Card, CardBody, List, ListItem, Spinner } from '@chakra-ui/react'
+import { Button, Card, CardBody, Center, List, ListItem, Spinner } from '@chakra-ui/react'
 import MatchCard from '../Matches/MatchCard'
 import { summonerAccount } from './useSummoner'
 import useGames from '../../hooks/useGames'
@@ -10,7 +10,7 @@ interface Props {
 
 const SummonerGameList = ({ summoner }: Props) => {
     const { data: leagueGames, isLoading: isLoadingGames } = useGames(summoner.puuid);
-    const [maxGames] = useState(5);
+    const [maxGames, setMaxGames] = useState(5);
 
     if (isLoadingGames) {
         return(
@@ -19,7 +19,7 @@ const SummonerGameList = ({ summoner }: Props) => {
     }
     
     return (
-        <Card padding={3}>
+        <Card padding={3} marginBottom={"30px"}>
             {"Últimas " + maxGames + " partidas"}
             <CardBody>
                 <List spacing={5}>
@@ -30,6 +30,9 @@ const SummonerGameList = ({ summoner }: Props) => {
                         </ListItem>
                     )
                 ))}
+                <Center>
+                    <Button onClick={() => setMaxGames(maxGames + 5)}>Mostrar Más</Button>
+                </Center>
                 </List>
             </CardBody>
         </Card>

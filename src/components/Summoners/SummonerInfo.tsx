@@ -1,13 +1,15 @@
-import { Spinner, Text, VStack } from '@chakra-ui/react';
+import { Box, Spinner, Text, VStack, useBreakpointValue } from '@chakra-ui/react';
 import useSummoners from './useSummoner';
 import SummonerGameList from './SummonerGameList';
 import { useParams } from 'react-router-dom';
+import SummonerMasteryList from './SummonerMasteryList';
 
 const SummonerInfo = () => {
     const gameName = useParams().gameName;
     const tag = useParams().tag;
 
     const { data: summoner, error, isLoading } = useSummoners(gameName, tag);
+    const isScreenSmall = useBreakpointValue({ base: true, lg: false });
 
     if (isLoading) return (
         <VStack>
@@ -19,17 +21,33 @@ const SummonerInfo = () => {
     if (error) return(<Text>{error}</Text>);
 
     return (
-        <VStack>
-            <Text as={"b"} fontSize={"2xl"}> 
-                {summoner.gameName ? "Investigando a " + summoner.gameName : "Invocador no encontrado."}
-            </Text>
-
-            {summoner.gameName && (
-                <>
-                    <SummonerGameList summoner={summoner}></SummonerGameList>
-                </>
+        <Box position={"relative"}>
+            {!isScreenSmall && (
+                <Box position="absolute" left="0">
+                    <SummonerMasteryList summoner={summoner} />
+                </Box>
             )}
-        </VStack>
+
+            <Box position={"absolute"} left={"50%"} transform="translateX(-50%)">
+                <VStack>
+                    <Text as={"b"} fontSize={"2xl"}> 
+                        {summoner.gameName ? "Investigando a " + summoner.gameName : "Invocador no encontrado."}
+                    </Text>
+
+                    {summoner.gameName && (
+                        <>
+                            <SummonerGameList summoner={summoner}></SummonerGameList>
+                        </>
+                    )}
+                </VStack>
+            </Box>
+
+            {!isScreenSmall && (
+                <Box position="absolute" right="0">
+                    <div>Elemento a la derecha</div>
+                </Box>
+            )}
+        </Box>
     );
 }
 

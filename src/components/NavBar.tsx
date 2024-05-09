@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const NavBar = () => {
     const navigate = useNavigate();
     const resetPage = () => {
-        
         navigate("/");
     }
 
@@ -31,7 +30,8 @@ const NavBar = () => {
                 whiteSpace={"nowrap"}
                 style={textStyles.textStyles.title} 
                 color={"purple.200"} 
-                fontSize={"60px"}>
+                as={"i"}
+                fontSize={"45px"}>
                 no más monadas
             </Text>
             

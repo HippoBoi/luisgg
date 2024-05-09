@@ -1,9 +1,10 @@
-import { Card, CardBody, HStack, List, ListItem, Text, VStack } from "@chakra-ui/react";
+import { Card, HStack, List, ListItem, Text, VStack } from "@chakra-ui/react";
 import { participantInfo } from "./useMatch";
-import ChampionIcon from "../ChampionIcon";
+import ChampionIcon from "../Champions/ChampionIcon";
 import { useState } from "react";
 import MapLanes from "./MapLanes";
-import textStyles from "../../TextStyles";
+import SummonerBuild from "../Summoners/SummonerBuild";
+import SummonerAchievments from "../Summoners/SummonerAchievments";
 
 interface Props {
     players: participantInfo[];
@@ -13,8 +14,6 @@ interface Props {
 const MatchPlayersInfo = ({ players, teamId }: Props) => {
     const blueTeam = teamId === 100 ? true : false;
     const [detailsOpen, setDetailsOpen] = useState(false);
-    const cardSize = "150px";
-    const cardWidth = "110px";
 
     return (
         <List>
@@ -23,15 +22,12 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
                     {player.teamId === teamId && (
                         <HStack>
                         {blueTeam && 
-                        <Card minWidth={cardWidth} maxWidth={cardWidth} minHeight={cardSize} maxHeight={cardSize}>
-                            <Text as={"b"} color={"purple.200"}>Logros:</Text>
-                            <CardBody padding={1}>
-                                <VStack>
-                                {player.firstBloodKill && <Text style={textStyles.textStyles.cardBody} color={"orange.300"}>- Primera Sangre</Text>}
-                                {player.firstTowerKill && <Text style={textStyles.textStyles.cardBody} color={"blue.200"}>- Primera Torreta</Text>}
-                                </VStack>
-                            </CardBody>
-                        </Card>}
+                        (
+                        <>
+                            <SummonerAchievments player={player} />
+                            <SummonerBuild player={player} />
+                        </>
+                        )}
                         <VStack spacing={"-25px"}>
                         <Text>{player.championName}</Text>
                         <Card 
@@ -96,15 +92,12 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
                         </Card>
                         </VStack>
                         {!blueTeam && 
-                            <Card minWidth={cardWidth} maxWidth={cardWidth} minHeight={cardSize} maxHeight={cardSize}>
-                                <Text as={"b"} color={"purple.200"}>Logros:</Text>
-                                <CardBody padding={1}>
-                                    <VStack>
-                                    {player.firstBloodKill && <Text style={textStyles.textStyles.cardBody} color={"orange.300"}>- Primera Sangre</Text>}
-                                    {player.firstTowerKill && <Text style={textStyles.textStyles.cardBody} color={"blue.200"}>- Primera Torreta</Text>}
-                                    </VStack>
-                                </CardBody>
-                            </Card>}
+                        (
+                            <>
+                            <SummonerBuild player={player} />
+                            <SummonerAchievments player={player} />
+                            </>
+                        )}
                         </HStack>
                     )}
                 </ListItem>

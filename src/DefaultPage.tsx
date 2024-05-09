@@ -2,7 +2,7 @@ import { Center, HStack, Text, VStack } from "@chakra-ui/react";
 // Busca un invocador de cualquier región introduciendo su nombre de invocador y Riot ID.
 function DefaultPage() {
     return(
-        <Center marginY={"100px"}>
+        <Center marginY={"70px"}>
             <VStack>
             <Text as={"b"} fontSize={"2xl"} color={"purple.500"}> 
                 Encuentra a cualquier invocador con una cuenta de Riot.

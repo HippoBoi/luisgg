@@ -2,9 +2,11 @@ import { Card, HStack, Spinner, Text, VStack } from "@chakra-ui/react";
 import useMatch from "./useMatch";
 import { summonerAccount } from "../Summoners/useSummoner";
 import { useState } from "react";
-import ChampionIcon from "../ChampionIcon";
+import ChampionIcon from "../Champions/ChampionIcon";
 import MapLanes from "./MapLanes";
 import { Link } from "react-router-dom";
+import useQueueInfo from "./useQueueInfo";
+import SummonerBuild from "../Summoners/SummonerBuild";
 
 interface Props {
     summoner: summonerAccount,
@@ -35,7 +37,6 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
     let playerInfo = match.info.participants[playerPos];
 
     if (!playerInfo) return(<Spinner></Spinner>);
-    console.log(playerInfo.riotIdGameName);
 
     return (
         <Link to={`/match/${summoner.gameName}/${summoner.tagLine}/${matchId}`}>
@@ -43,7 +44,8 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
             width={"100%"}
             as={"button"}
             bgColor={playerInfo.win === true ? "purple.600" : "pink.700"}
-            height={"50px"} 
+            minHeight={"50px"} 
+            maxHeight={"80px"}
             _hover={playerInfo.win === true ? { backgroundColor: "blue.300" } : { backgroundColor: "red.300" }}
             onClick={onClick}>
             <HStack>
@@ -53,12 +55,14 @@ const MatchCard = ({ summoner, matchId }: Props ) => {
                     <Text>
                         {playerInfo.kills + " / " + playerInfo.deaths + " / " + playerInfo.assists}
                     </Text>
+                    <SummonerBuild player={playerInfo} />
                 </HStack>
                 <HStack>
+                    <Text as={"b"} color={"pink.200"}>{playerInfo.championName}</Text>
                     <MapLanes teamPos={playerInfo.teamPosition} />
                 </HStack>
             </VStack>
-                <Text>{match.info.gameMode}</Text>
+                <Text as={"b"} color={"purple.100"}>{useQueueInfo(match.info.queueId)}</Text>
             </HStack>
         </Card>
         </Link>

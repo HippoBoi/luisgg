@@ -19,8 +19,6 @@ const MatchPage = () => {
 
     if (error) return(<Text>{error}</Text>);
     if (sumError) return(<Text>{sumError}</Text>)
-    
-    console.log(match);
 
     let playerPos = match.metadata.participants.indexOf(summoner.puuid);
     let playerInfo = match.info.participants[playerPos];
@@ -45,12 +43,12 @@ const MatchPage = () => {
             </VStack>
         </Center>
         <HStack justifyContent={"space-between"} marginTop={"10px"}>
-            <Text> hihihihi </Text>
+            <Text> -- </Text>
             <HStack spacing={"20px"}>
                 <MatchPlayersInfo players={match.info.participants} teamId={100} />
                 <MatchPlayersInfo players={match.info.participants} teamId={200} />
             </HStack>
-            <Text> hihihihi </Text>
+            <Text> -- </Text>
         </HStack>
         </>
     )
