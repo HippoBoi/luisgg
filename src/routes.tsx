@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 //import MatchPage from "./components/MatchAnalysis/MatchPage";
-import Layout from "./Layout";
-import DefaultPage from "./DefaultPage";
+import Layout from "./pages/Layout";
+import DefaultPage from "./pages/DefaultPage";
 import SummonerInfo from "./components/Summoners/SummonerInfo";
 import MatchPage from "./components/Matches/MatchPage";
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
     { 

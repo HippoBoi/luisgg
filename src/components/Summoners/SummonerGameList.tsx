@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Center, List, ListItem, Spinner } from '@chakra-ui/react'
+import { Button, Card, CardBody, Center, List, ListItem, Spinner, Text } from '@chakra-ui/react'
 import MatchCard from '../Matches/MatchCard'
 import { summonerAccount } from './useSummoner'
 import useGames from '../../hooks/useGames'
@@ -30,9 +30,13 @@ const SummonerGameList = ({ summoner }: Props) => {
                         </ListItem>
                     )
                 ))}
-                {maxGames < 20 && (
+                {maxGames < 20 ? (
                     <Center>
                         <Button onClick={() => setMaxGames(maxGames + 5)}>Mostrar Más</Button>
+                    </Center>
+                ) : (
+                    <Center>
+                        <Text as={"i"} color={"purple.200"}>Eso es todo por ahora.</Text>
                     </Center>
                 )}
                 </List>

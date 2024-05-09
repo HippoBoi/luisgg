@@ -1,5 +1,5 @@
 import { Button, Center, Text, VStack } from "@chakra-ui/react"
-import textStyles from "./TextStyles"
+import textStyles from "../TextStyles"
 import { isRouteErrorResponse, useNavigate, useRouteError } from "react-router-dom";
 
 const ErrorPage = () => {

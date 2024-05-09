@@ -7,11 +7,11 @@ interface Props {
 }
 
 const SearchUser = ({ summonerSubmit }: Props) => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, resetField } = useForm()
     const isScreenSmall = useBreakpointValue({ base: true, lg: false });
 
     const submitData = (event: FieldValues) => {
-        summonerSubmit(event.name + "/" + event.tag);
+        summonerSubmit(event.gameName + "/" + event.tag);
     };
 
     return (
@@ -28,12 +28,12 @@ const SearchUser = ({ summonerSubmit }: Props) => {
 
                 <InputGroup>
                     <Input 
-                    {...register("name", { required: true, minLength: 1 })}
+                    {...register("gameName", { required: true, minLength: 1 })}
                     variant={"filled"} 
                     placeholder='"KHN Clean..."' />
                     {!isScreenSmall && (
                         <InputRightElement>
-                            <Button fontSize={"13px"} color={"gray"} bg={"transparent"}>X</Button>
+                            <Button fontSize={"13px"} color={"gray"} bg={"transparent"} onClick={() => resetField("gameName")}>X</Button>
                         </InputRightElement>
                     )}
                 </InputGroup>
@@ -50,7 +50,7 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                     placeholder='"KHN..."' />
                     {!isScreenSmall && (
                         <InputRightElement>
-                            <Button fontSize={"13px"} color={"gray"} bg={"transparent"}>X</Button>
+                            <Button fontSize={"13px"} color={"gray"} bg={"transparent"} onClick={() => resetField("tag")}>X</Button>
                         </InputRightElement>
                     )}
                 </InputGroup>

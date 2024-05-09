@@ -18,15 +18,11 @@ const SummonerAchievments = ({ allPlayers, player }: Props) => {
     const [topFarm, setTopFarm] = useState(0);
 
     useEffect(() => {
-        allPlayers.map((p) => console.log(p.timeCCingOthers, p.championName));
-
         setTopDamage(getTopStats.getTopDmg(allPlayers));
         setTopTimeCCing(getTopStats.getTopTimeCCing(allPlayers));
         setTopGold(getTopStats.getTopGold(allPlayers));
         setTopFarm(getTopStats.getTopFarm(allPlayers));
     }, [])
-
-    console.log(topTimeCCing);
 
     return (
         <Card align={"flex-start"} minWidth={cardWidth} maxWidth={cardWidth} minHeight={cardSize} maxHeight={cardSize}>

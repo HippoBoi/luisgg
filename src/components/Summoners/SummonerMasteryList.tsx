@@ -19,7 +19,7 @@ const SummonerMasteryList = ({ summoner }: Props) => {
     if (masteryError) return(<Text>{masteryError}</Text>);
     if (champError) return(<Text>{champError}</Text>);
 
-    if (!masteries || !champions || !champions.data) return(<Text></Text>);
+    if (!masteries.map || !champions || !champions.data) return(<Text>Couldn't load</Text>);
     let championNames = Object.keys(champions.data);
 
     return (
@@ -40,4 +40,4 @@ const SummonerMasteryList = ({ summoner }: Props) => {
     );
 }
 
-export default SummonerMasteryList
+export default SummonerMasteryList;
