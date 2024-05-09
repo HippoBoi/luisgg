@@ -7,9 +7,9 @@ import SummonerMasteryList from './SummonerMasteryList';
 const SummonerInfo = () => {
     const gameName = useParams().gameName;
     const tag = useParams().tag;
+    const isScreenSmall = useBreakpointValue({ base: true, lg: false });
 
     const { data: summoner, error, isLoading } = useSummoners(gameName, tag);
-    const isScreenSmall = useBreakpointValue({ base: true, lg: false });
 
     if (isLoading) return (
         <VStack>

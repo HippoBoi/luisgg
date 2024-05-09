@@ -21,13 +21,13 @@ const SearchUser = ({ summonerSubmit }: Props) => {
 
         if (nameRef.current && tagRef.current) {
             summonerSubmit(nameRef.current.value + "/" + tagRef.current.value);
-            //resetForm(true, true);
+            resetForm(true, true);
         }
     };
 
     return (
         <form onSubmit={(event) => submitData(event)}>
-        <VStack marginTop={"-40px"} marginBottom={"30px"}>
+        <VStack marginTop={"90px"}>
             <Text style={textStyles.textStyles.title} as={"i"}>
                     Buscar invocador:
             </Text>
