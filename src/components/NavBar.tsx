@@ -21,7 +21,7 @@ const NavBar = () => {
             "no más monadas"
         ],
         "en": [
-            "no bullshit"
+            "no more throwing"
         ],
         "fr": [
             "pas de conneries"
