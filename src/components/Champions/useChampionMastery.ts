@@ -13,7 +13,7 @@ export interface masteryJSON {
     summonerId: string
 }
 
-const useChampionMastery = (summonerPUUID: string) => useDataArray<masteryJSON>(`/riotOld/lol/champion-mastery/v4/champion-masteries/by-puuid/${summonerPUUID}`,
+const useChampionMastery = (summonerPUUID: string, region: string) => useDataArray<masteryJSON>(`/riotOld/${region}/lol/champion-mastery/v4/champion-masteries/by-puuid/${summonerPUUID}`,
     {params: { summonerPUUID: summonerPUUID }},
     [summonerPUUID]
 );

@@ -6,14 +6,18 @@ import MatchPlayersInfo from './MatchPlayersInfo';
 import useSummoners from '../Summoners/useSummoner';
 import { useContext } from 'react';
 import LanguageContext from '../LanguageContext';
+import RegionContext from '../RegionContext';
+import regionToContinent from '../RegionToContinent';
 
 const MatchPage = () => {
     const matchId = useParams().matchId;
     const summonerName = useParams().gameName;
     const summonerTag = useParams().tag;
 
-    const { data: summoner, error: sumError, isLoading: isSummonerLoading } = useSummoners(summonerName, summonerTag);
-    const { data: match, error, isLoading } = useMatch(matchId);
+    const { region } = useContext(RegionContext);
+
+    const { data: summoner, error: sumError, isLoading: isSummonerLoading } = useSummoners(summonerName, summonerTag, regionToContinent(region));
+    const { data: match, error, isLoading } = useMatch(matchId, regionToContinent(region));
 
     const {language} = useContext(LanguageContext);
     const textByLanguage = {

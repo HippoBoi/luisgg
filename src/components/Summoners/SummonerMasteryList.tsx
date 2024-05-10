@@ -5,6 +5,7 @@ import useChampions from "../Champions/useChampions";
 import { useContext, useState } from "react";
 import ChampionInfoCard from "../Champions/ChampionInfoCard";
 import LanguageContext from "../LanguageContext";
+import RegionContext from "../RegionContext";
 
 interface Props {
     summoner: summonerAccount
@@ -12,16 +13,9 @@ interface Props {
 
 const SummonerMasteryList = ({ summoner }: Props) => {
     const [language] = useState("en_US");
-    const { data: masteries, error: masteryError, isLoading: masteryLoading } = useChampionMastery(summoner.puuid);
+    const { region } = useContext(RegionContext);
+    const { data: masteries, error: masteryError, isLoading: masteryLoading } = useChampionMastery(summoner.puuid, region);
     const { data: champions, error: champError, isLoading: champLoading } = useChampions(language);
-
-    if (masteryLoading || champLoading) return(<Spinner></Spinner>);
-
-    if (masteryError) return(<Text>{masteryError}</Text>);
-    if (champError) return(<Text>{champError}</Text>);
-
-    if (!masteries.map || !champions || !champions.data) return(<Text>Couldn't load</Text>);
-    let championNames = Object.keys(champions.data);
 
     const {language: curLanguage} = useContext(LanguageContext);
     const textByLanguage = {
@@ -35,6 +29,14 @@ const SummonerMasteryList = ({ summoner }: Props) => {
             "Meilleurs Champs :",
         ]
     };
+
+    if (masteryLoading || champLoading) return(<Spinner></Spinner>);
+
+    if (masteryError) return(<Text>{masteryError}</Text>);
+    if (champError) return(<Text>{champError}</Text>);
+
+    if (!masteries.map || !champions || !champions.data) return(<Text>Couldn't load</Text>);
+    let championNames = Object.keys(champions.data);
 
     return (
         <VStack marginBottom={"30px"}>

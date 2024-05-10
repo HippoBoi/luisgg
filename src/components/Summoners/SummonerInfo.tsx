@@ -5,11 +5,15 @@ import { useParams } from 'react-router-dom';
 import SummonerMasteryList from './SummonerMasteryList';
 import { useContext } from 'react';
 import LanguageContext from '../LanguageContext';
+import RegionContext from '../RegionContext';
+import regionToContinent from '../RegionToContinent';
 
 const SummonerInfo = () => {
     const gameName = useParams().gameName;
     const tag = useParams().tag;
+    const { region } = useContext(RegionContext);
     const isScreenSmall = useBreakpointValue({ base: true, lg: false });
+    const { data: summoner, error, isLoading } = useSummoners(gameName, tag, regionToContinent(region));
 
     const {language} = useContext(LanguageContext);
     const textByLanguage = {
@@ -26,8 +30,6 @@ const SummonerInfo = () => {
             "Invocateur introuvable."
         ]
     };
-
-    const { data: summoner, error, isLoading } = useSummoners(gameName, tag);
 
     if (isLoading) return (
         <VStack>

@@ -36,20 +36,23 @@ function DefaultPage() {
     return(
         <Center marginY={"70px"}>
             <VStack>
-            <Text as={"b"} fontSize={"2xl"} color={"purple.500"}> 
+            <Text as={"b"} fontSize={"2xl"} color={"pink.300"}> 
                 {textByLanguage[language][0]}
             </Text>
-            <HStack marginBottom={"20px"}>
-            <Text as={"b"} fontSize={"2xl"} color={"pink.700"}> 
-                {textByLanguage[language][1]}
-            </Text> 
-            <Text as={"b"} fontSize={"2xl"} color={"pink.500"}>
-            KHN Clean, 
-            </Text>
-            <Text as={"b"} fontSize={"2xl"} color={"red.400"}>
-                KHN
-            </Text>
+            <HStack>
+                <Text as={"b"} fontSize={"2xl"} color={"pink.700"}> 
+                    {textByLanguage[language][1]}
+                </Text> 
+                <Text as={"b"} fontSize={"2xl"} color={"pink.500"}>
+                KHN Clean, 
+                </Text>
+                <Text as={"b"} fontSize={"2xl"} color={"red.400"}>
+                    KHN
+                </Text>
             </HStack>
+            <Text marginBottom={"20px"} as={"b"} fontSize={"15px"} color={"pink.400"}>
+                (Region: LAS)
+            </Text>
             <Text 
                 as={"button"}
                 textDecoration="underline" 

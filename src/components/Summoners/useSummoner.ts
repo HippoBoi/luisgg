@@ -6,11 +6,12 @@ export interface summonerAccount {
     tagLine: string,
 };
 
-const useSummoners = (gameName: string | undefined, tag: string | undefined) => {
+const useSummoners = (gameName: string | undefined, tag: string | undefined, region: string) => {
+    console.log(region);
     if (!gameName || !tag) {
-        return(useData<summonerAccount>(`/riot/null`));
+        return(useData<summonerAccount>(`/riot/null/null`));
     }
-    return (useData<summonerAccount>(`/riot/riot/account/v1/accounts/by-riot-id/${gameName}/${tag}`, 
+    return (useData<summonerAccount>(`/riot/${region}/riot/account/v1/accounts/by-riot-id/${gameName}/${tag}`, 
     {params: { summonerId: gameName+tag }}, 
     [gameName+tag]));
 };

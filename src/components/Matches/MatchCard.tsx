@@ -1,12 +1,14 @@
 import { Card, HStack, Spinner, Text, VStack } from "@chakra-ui/react";
 import useMatch from "./useMatch";
 import { summonerAccount } from "../Summoners/useSummoner";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ChampionIcon from "../Champions/ChampionIcon";
 import MapLanes from "./MapLanes";
 import { Link } from "react-router-dom";
 import useQueueInfo from "./useQueueInfo";
 import SummonerBuild from "../Summoners/SummonerBuild";
+import RegionContext from "../RegionContext";
+import regionToContinent from "../RegionToContinent";
 
 interface Props {
     summoner: summonerAccount,
@@ -14,7 +16,8 @@ interface Props {
 }
 
 const MatchCard = ({ summoner, matchId }: Props ) => {
-    const {data: match, error, isLoading} = useMatch(matchId);
+    const { region } = useContext(RegionContext);
+    const {data: match, error, isLoading} = useMatch(matchId, regionToContinent(region));
     const [infoOpen, setInfoOpen] = useState(false);
     const onClick = () => {
         setInfoOpen(!infoOpen);

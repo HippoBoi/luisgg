@@ -29,7 +29,11 @@ app.get('/', (req, res) => {
 
 // route handler for the riot api proxy
 app.get('/riot/*', async (req, res) => {
-    const riotUrl = `https://americas.api.riotgames.com/${req.params[0]}`;
+    const parts = req.params[0].split('/');
+    const region = parts[0];
+    const endpoint = parts.slice(1).join('/');
+    
+    const riotUrl = `https://${region}.api.riotgames.com/${endpoint}`;
 
     try {
         const response = await fetch(`${riotUrl}?api_key=${apiKey}`);
@@ -45,8 +49,11 @@ app.get('/riot/*', async (req, res) => {
 
 // old riot route
 app.get('/riotOld/*', async (req, res) => {
-    const riotUrl = `https://la2.api.riotgames.com/${req.params[0]}`;
-
+    const parts = req.params[0].split('/');
+    const region = parts[0];
+    const endpoint = parts.slice(1).join('/');
+    const riotUrl = `https://${region}.api.riotgames.com/${endpoint}`;
+    
     try {
         const response = await fetch(`${riotUrl}?api_key=${apiKey}`);
         const data = await response.json();

@@ -4,13 +4,16 @@ import { summonerAccount } from './useSummoner'
 import useGames from '../../hooks/useGames'
 import { useContext, useState } from 'react'
 import LanguageContext from '../LanguageContext'
+import RegionContext from '../RegionContext'
+import regionToContinent from '../RegionToContinent'
 
 interface Props {
     summoner: summonerAccount
 }
 
 const SummonerGameList = ({ summoner }: Props) => {
-    const { data: leagueGames, isLoading: isLoadingGames } = useGames(summoner.puuid);
+    const { region } = useContext(RegionContext);
+    const { data: leagueGames, isLoading: isLoadingGames } = useGames(summoner.puuid, regionToContinent(region));
     const [maxGames, setMaxGames] = useState(5);
 
     const {language} = useContext(LanguageContext);

@@ -1,8 +1,9 @@
-import { Button, HStack, Input, InputGroup, InputRightElement, Text, VStack, useBreakpointValue } from "@chakra-ui/react";
+import { Button, HStack, Input, InputGroup, InputRightElement, Select, Text, VStack, useBreakpointValue } from "@chakra-ui/react";
 import textStyles from "../TextStyles";
 import { FieldValues, useForm } from "react-hook-form";
 import { useContext } from "react";
 import LanguageContext from "./LanguageContext";
+import RegionContext from "./RegionContext";
 
 interface Props {
     summonerSubmit: (summonerId: string) => void;
@@ -11,6 +12,7 @@ interface Props {
 const SearchUser = ({ summonerSubmit }: Props) => {
     const { register, handleSubmit, resetField } = useForm()
     const isScreenSmall = useBreakpointValue({ base: true, lg: false });
+    const { dispatch } = useContext(RegionContext);
 
     const submitData = (event: FieldValues) => {
         summonerSubmit(event.gameName + "/" + event.tag);
@@ -42,7 +44,7 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                     {textByLanguage[language][0]}
             </Text>
 
-            <HStack marginLeft={"10px"} spacing={"15px"} justifyContent={"space-between"}>
+            <HStack marginRight={"20px"} spacing={"15px"} justifyContent={"space-between"}>
                 <Text style={textStyles.textStyles.title} as={"i"}>
                     {textByLanguage[language][1]}
                 </Text>
@@ -64,7 +66,7 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                     TAG:
                 </Text>
 
-                <InputGroup marginRight={"90px"}>
+                <InputGroup marginRight={"20px"}>
                     <Input 
                     {...register("tag", { required: true, minLength: 1 })}
                     variant={"filled"} 
@@ -75,6 +77,28 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                         </InputRightElement>
                     )}
                 </InputGroup>
+
+                <Text style={textStyles.textStyles.title} as={"i"}>
+                    Region:
+                </Text>
+                <Select onChange={(event) => dispatch({type: "CHANGE", newRegion: event.target.value})}>
+                    <option value="LA2">LAS</option>
+                    <option value="LA1">LAN</option>
+                    <option value="NA1">NA</option>
+                    <option value="BR1">BR</option>
+                    <option value="EUW1">EUW</option>
+                    <option value="EUN1">EUN</option>
+                    <option value="TR1">TR</option>
+                    <option value="RU">RU</option>
+                    <option value="KR">KR</option>
+                    <option value="JP1">JP</option>
+                    <option value="OC1">OC</option>
+                    <option value="PH2">PH2</option>
+                    <option value="TH2">TH2</option>
+                    <option value="SG2">SG2</option>
+                    <option value="TW2">TW2</option>
+                    <option value="VN2">VN2</option>
+                </Select>
             </HStack>
 
             <Button type="submit">{textByLanguage[language][2]}</Button>
