@@ -86,7 +86,7 @@ const MatchPlayersInfo = ({ players, teamId }: Props) => {
 
                             <HStack>
                                 <Text fontSize={isScreenSmall ? smallFontSize : fontSize}>
-                                    Posición: 
+                                    Rol: 
                                 </Text>
                                 <MapLanes 
                                     teamPos={player.teamPosition} 
