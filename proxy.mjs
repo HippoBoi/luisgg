@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename); // Obtener el directorio del archivo
 const app = express();
 const port = process.env.port || 3000;
 const server = http.createServer(app);
-const apiKey = '';
+const apiKey = process.env.apiKey;
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', "*");
