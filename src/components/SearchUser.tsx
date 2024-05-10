@@ -1,6 +1,8 @@
 import { Button, HStack, Input, InputGroup, InputRightElement, Text, VStack, useBreakpointValue } from "@chakra-ui/react";
 import textStyles from "../TextStyles";
 import { FieldValues, useForm } from "react-hook-form";
+import { useContext } from "react";
+import LanguageContext from "./LanguageContext";
 
 interface Props {
     summonerSubmit: (summonerId: string) => void;
@@ -14,16 +16,35 @@ const SearchUser = ({ summonerSubmit }: Props) => {
         summonerSubmit(event.gameName + "/" + event.tag);
     };
 
+    const { language } = useContext(LanguageContext);
+    const textByLanguage = {
+        "es": [
+            "Buscar Invocador:",
+            "Nombre:",
+            "Buscar"
+        ],
+        "en": [
+            "Search Summoner:",
+            "Name:",
+            "Search"
+        ],
+        "fr": [
+            "Chercher Invocateur:",
+            "Nom:",
+            "Chercher"
+        ]
+    };
+
     return (
         <form onSubmit={handleSubmit(data => submitData(data))}>
         <VStack marginTop={"90px"}>
             <Text style={textStyles.textStyles.title} as={"i"}>
-                    Buscar invocador:
+                    {textByLanguage[language][0]}
             </Text>
 
             <HStack marginLeft={"10px"} spacing={"15px"} justifyContent={"space-between"}>
                 <Text style={textStyles.textStyles.title} as={"i"}>
-                    Nombre:
+                    {textByLanguage[language][1]}
                 </Text>
 
                 <InputGroup>
@@ -56,7 +77,7 @@ const SearchUser = ({ summonerSubmit }: Props) => {
                 </InputGroup>
             </HStack>
 
-            <Button type="submit">Search</Button>
+            <Button type="submit">{textByLanguage[language][2]}</Button>
         </VStack>
         </form>
     );

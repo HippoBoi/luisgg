@@ -4,15 +4,32 @@ import { useParams } from 'react-router-dom'
 import useMatch from './useMatch';
 import MatchPlayersInfo from './MatchPlayersInfo';
 import useSummoners from '../Summoners/useSummoner';
+import { useContext } from 'react';
+import LanguageContext from '../LanguageContext';
 
 const MatchPage = () => {
     const matchId = useParams().matchId;
     const summonerName = useParams().gameName;
     const summonerTag = useParams().tag;
 
-
     const { data: summoner, error: sumError, isLoading: isSummonerLoading } = useSummoners(summonerName, summonerTag);
     const { data: match, error, isLoading } = useMatch(matchId);
+
+    const {language} = useContext(LanguageContext);
+    const textByLanguage = {
+        "es": [
+            "Victoria",
+            "Derrota"
+        ],
+        "en": [
+            "Victory",
+            "Defeat"
+        ],
+        "fr": [
+            "Victoire",
+            "Défaite"
+        ]
+    };
 
     if (!match || !summoner || isSummonerLoading || !match.metadata || !match.info 
     || isLoading || Object.keys(match).length <= 0) /// a buuunch of ifs
@@ -36,7 +53,7 @@ const MatchPage = () => {
                 marginTop={"20px"}
                 as={"i"}
                 color={playerInfo.win ? "purple.200" : "pink.400"}>
-                {playerInfo.win ? "Victoria" : "Derrota"}
+                {playerInfo.win ? textByLanguage[language][0] : textByLanguage[language][1]}
             </Text>
             <Text color={"gray.300"}>
                 {"Duración: " + matchMinutes + ":" + matchSeconds}

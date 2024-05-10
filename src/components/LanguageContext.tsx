@@ -3,7 +3,7 @@ import React from "react";
 import { LanguageAction } from "./languageReducer";
 
 interface LanguateListType {
-    language: string;
+    language: "es" | "en" | "fr";
     dispatch: Dispatch<LanguageAction>
 }
 

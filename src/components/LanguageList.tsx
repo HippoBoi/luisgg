@@ -5,12 +5,15 @@ import LanguageContext from "./LanguageContext"
 const LanguageList = () => {
     const {language, dispatch} = useContext(LanguageContext);
 
-    const languageChanged = (lang: string) => {
+    const languageChanged = (lang: "es" | "en" | "fr") => {
         dispatch({type: "CHANGE", newLeng: lang})
     }
 
     return (
-        <Select defaultValue={language} onChange={(event) => languageChanged(event.target.value)}>
+        <Select defaultValue={language} onChange={(event) => {
+            if (event.target.value === "es" || event.target.value === "en" || event.target.value === "fr")
+                languageChanged(event.target.value);
+            }}>
             <option value="es">Español</option>
             <option value="en">English</option>
             <option value="fr">Français</option>

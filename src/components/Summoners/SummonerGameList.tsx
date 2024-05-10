@@ -2,7 +2,8 @@ import { Button, Card, CardBody, Center, List, ListItem, Spinner, Text } from '@
 import MatchCard from '../Matches/MatchCard'
 import { summonerAccount } from './useSummoner'
 import useGames from '../../hooks/useGames'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import LanguageContext from '../LanguageContext'
 
 interface Props {
     summoner: summonerAccount
@@ -12,6 +13,28 @@ const SummonerGameList = ({ summoner }: Props) => {
     const { data: leagueGames, isLoading: isLoadingGames } = useGames(summoner.puuid);
     const [maxGames, setMaxGames] = useState(5);
 
+    const {language} = useContext(LanguageContext);
+    const textByLanguage = {
+        "es": [
+            "Últimas ",
+            " partidas",
+            "Mostrar Más",
+            "Eso es todo por ahora."
+        ],
+        "en": [
+            "Last ",
+            " games",
+            "Show More",
+            "That's all for now."
+        ],
+        "fr": [
+            "",
+            " derniers matchs",
+            "Montre Plus",
+            "C'est tout pour le moment."
+        ]
+    };
+
     if (isLoadingGames) {
         return(
             <Spinner/>
@@ -20,7 +43,7 @@ const SummonerGameList = ({ summoner }: Props) => {
     
     return (
         <Card padding={3} marginBottom={"30px"}>
-            {"Últimas " + maxGames + " partidas"}
+            {textByLanguage[language][0] + maxGames + textByLanguage[language][1]}
             <CardBody>
                 <List spacing={5}>
                 {Array.isArray(leagueGames) && leagueGames.map((game, index) => (
@@ -32,11 +55,11 @@ const SummonerGameList = ({ summoner }: Props) => {
                 ))}
                 {maxGames < 20 ? (
                     <Center>
-                        <Button onClick={() => setMaxGames(maxGames + 5)}>Mostrar Más</Button>
+                        <Button onClick={() => setMaxGames(maxGames + 5)}>{textByLanguage[language][2]}</Button>
                     </Center>
                 ) : (
                     <Center>
-                        <Text as={"i"} color={"purple.200"}>Eso es todo por ahora.</Text>
+                        <Text as={"i"} color={"purple.200"}>{textByLanguage[language][3]}</Text>
                     </Center>
                 )}
                 </List>

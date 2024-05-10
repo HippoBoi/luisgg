@@ -2,7 +2,8 @@ import { Card, HStack, VStack, Text } from '@chakra-ui/react'
 import ChampionIcon from './ChampionIcon'
 import { championBody } from './useChampions';
 import { masteryJSON } from './useChampionMastery';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import LanguageContext from '../LanguageContext';
 
 interface Props {
     champion: championBody;
@@ -14,6 +15,19 @@ const ChampionInfoCard = ({ champion, mastery }: Props) => {
     const [curChampName, setCurChampName] = useState("");
     const numberWithDots = (num: number) => {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    };
+
+    const {language} = useContext(LanguageContext);
+    const textByLanguage = {
+        "es": [
+            " puntos.",
+        ],
+        "en": [
+            " points."
+        ],
+        "fr": [
+            " points.",
+        ]
     };
 
     useEffect(() => {
@@ -57,7 +71,7 @@ const ChampionInfoCard = ({ champion, mastery }: Props) => {
                     color={"yellow.200"}>
                     {numberWithDots(mastery.championPoints)}
                 </Text>
-                <Text>{" puntos."}</Text>
+                <Text>{textByLanguage[language][0]}</Text>
                 </HStack>
             </VStack>
         </Card>

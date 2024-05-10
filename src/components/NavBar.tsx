@@ -4,6 +4,8 @@ import logo from '../assets/images/luchoLogo.jpg';
 import SwitchTheme from "./SwitchTheme";
 import { useNavigate } from "react-router-dom";
 import LanguageList from "./LanguageList";
+import { useContext } from "react";
+import LanguageContext from "./LanguageContext";
 
 const NavBar = () => {
     const isScreenSmall = useBreakpointValue({ base: true, lg: false });
@@ -12,6 +14,19 @@ const NavBar = () => {
     const resetPage = () => {
         navigate("/");
     }
+
+    const { language } = useContext(LanguageContext);
+    const textByLanguage = {
+        "es": [
+            "no más monadas"
+        ],
+        "en": [
+            "no bullshit"
+        ],
+        "fr": [
+            "pas de conneries"
+        ]
+    };
 
     return (
         <Box position={"relative"} padding={2}>
@@ -39,12 +54,12 @@ const NavBar = () => {
                         color={"purple.200"} 
                         as={"i"}
                         fontSize={"45px"}>
-                        no más monadas
+                        {textByLanguage[language][0]}
                     </Text>
                 </Box>
             )}
             
-            <Box position={"absolute"} right={isEvenSmaller ? "20%" : "30%"} marginTop={"5px"}>
+            <Box position={"absolute"} right={isEvenSmaller ? "12%" : "30%"} marginTop={"5px"}>
                 <LanguageList />
             </Box>
 

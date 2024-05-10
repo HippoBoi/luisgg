@@ -13,8 +13,6 @@ const Layout = () => {
         navigate(`/summoner/${gameName}/${tag}`);
     }
 
-    console.log(language);
-
     return (
         <LanguageContext.Provider value={{ language, dispatch }}>
             <NavBar />

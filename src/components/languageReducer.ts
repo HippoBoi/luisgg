@@ -1,9 +1,9 @@
 export interface LanguageAction {
     type: "CHANGE"
-    newLeng: string;
+    newLeng: "es" | "en" | "fr";
 }
 
-const languageReducer = (language: string, action: LanguageAction) => {
+const languageReducer = (language: "es" | "en" | "fr", action: LanguageAction) => {
     if (action.type === "CHANGE") {
         return(action.newLeng);
     }
