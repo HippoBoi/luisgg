@@ -5,6 +5,8 @@ import DefaultPage from "./pages/DefaultPage";
 import SummonerInfo from "./components/Summoners/SummonerInfo";
 import MatchPage from "./components/Matches/MatchPage";
 import ErrorPage from "./pages/ErrorPage";
+import LuisGG from "./components/LuisGG";
+import RiotTxt from "./components/RiotTxt";
 
 const router = createBrowserRouter([
     { 
@@ -19,7 +21,9 @@ const router = createBrowserRouter([
             },
             { path: "/match/:gameName/:tag/:matchId", element: <MatchPage /> }
         ]
-    }
+    },
+    { path: "/luisgg.txt", element: <LuisGG /> },
+    { path: "/riot.txt", element: <RiotTxt /> }
 ]);
 
 export default router;
