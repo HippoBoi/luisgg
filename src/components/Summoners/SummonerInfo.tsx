@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import LanguageContext from '../LanguageContext';
 import RegionContext from '../RegionContext';
 import regionToContinent from '../RegionToContinent';
+import LegalBoilerplate from '../LegalBoilerplate';
 
 const SummonerInfo = () => {
     const gameName = useParams().gameName;
@@ -41,6 +42,7 @@ const SummonerInfo = () => {
     if (error) return(<Text>{error}</Text>);
 
     return (
+        <>
         <Box position={"relative"}>
             {!isScreenSmall && (
                 <Box position="absolute" left="1%">
@@ -59,9 +61,12 @@ const SummonerInfo = () => {
                             <SummonerGameList summoner={summoner}></SummonerGameList>
                         </>
                     )}
+                    <LegalBoilerplate />
                 </VStack>
             </Box>
         </Box>
+        
+        </>
     );
 }
 

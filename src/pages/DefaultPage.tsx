@@ -2,6 +2,7 @@ import { Box, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import exampleImage from "../assets/images/example.png"
 import { useContext, useState } from "react";
 import LanguageContext from "../components/LanguageContext";
+import LegalBoilerplate from "../components/LegalBoilerplate";
 
 function DefaultPage() {
     const [showInfo, setShowInfo] = useState(false);
@@ -74,6 +75,7 @@ function DefaultPage() {
                 </VStack>
                 </>
             )}
+            <LegalBoilerplate />
             </VStack>
         </Center>
     );

@@ -1,6 +1,6 @@
-import { Box, Center, Spinner, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Center, Spinner, Text, VStack } from '@chakra-ui/react'
 import textStyles from '../../TextStyles'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useMatch from './useMatch';
 import MatchPlayersInfo from './MatchPlayersInfo';
 import useSummoners from '../Summoners/useSummoner';
@@ -8,11 +8,13 @@ import { useContext } from 'react';
 import LanguageContext from '../LanguageContext';
 import RegionContext from '../RegionContext';
 import regionToContinent from '../RegionToContinent';
+import LegalBoilerplate from '../LegalBoilerplate';
 
 const MatchPage = () => {
     const matchId = useParams().matchId;
     const summonerName = useParams().gameName;
     const summonerTag = useParams().tag;
+    const navigate = useNavigate();
 
     const { region } = useContext(RegionContext);
 
@@ -62,6 +64,9 @@ const MatchPage = () => {
             <Text color={"gray.300"}>
                 {"Duración: " + matchMinutes + ":" + matchSeconds}
             </Text>
+            <Button onClick={() => navigate(-1)}>
+                Return to Match History
+            </Button>
             </VStack>
         </Center>
         <Box position={"relative"}>
@@ -70,6 +75,9 @@ const MatchPage = () => {
             </Box>
             <Box position={"absolute"} right={"0%"}>
                 <MatchPlayersInfo players={match.info.participants} teamId={200} />
+            </Box>
+            <Box position={"absolute"} left={"0%"}>
+                <LegalBoilerplate marginTop={900} />
             </Box>
         </Box>
         </>
