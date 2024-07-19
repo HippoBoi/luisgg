@@ -10,7 +10,7 @@ function DefaultPage() {
     const textByLanguage = {
         "es": [
             "Encuentra a cualquier invocador con una cuenta de Riot ID.",
-            "Ejemplo:",
+            "",
             "¿Qué es una cuenta Riot ID?",
             "Las cuentas de LoL pasaron a ser cuentas de Riot que se manejan con Riot ID",
             "Riot ID cuenta con un nombre de usuario y un TAG.",
@@ -18,7 +18,7 @@ function DefaultPage() {
         ],
         "en": [
             "Find any summoner with a Riot ID account.",
-            "Example:",
+            "",
             "What is a Riot ID account?",
             "LoL accounts now are Riot accounts that use Riot ID.",
             "Riot ID contains username and TAG.",
@@ -26,7 +26,7 @@ function DefaultPage() {
         ],
         "fr": [
             "Trouver n'importe quel invocateur avec un compte Riot ID.",
-            "Exemple:",
+            "",
             "Qu'est-ce qu'un compte Riot ID ?",
             "Les comptes LoL sont désormais des comptes Riot qui utilisent l'identifiant Riot.",
             "Riot ID contient le nom d'utilisateur et le TAG.",
@@ -35,7 +35,7 @@ function DefaultPage() {
     };
 
     return(
-        <Center marginY={"70px"}>
+        <Center marginY={"100px"}>
             <VStack>
             <Text as={"b"} fontSize={"2xl"} color={"pink.300"}> 
                 {textByLanguage[language][0]}
@@ -44,16 +44,7 @@ function DefaultPage() {
                 <Text as={"b"} fontSize={"2xl"} color={"pink.700"}> 
                     {textByLanguage[language][1]}
                 </Text> 
-                <Text as={"b"} fontSize={"2xl"} color={"pink.500"}>
-                KHN Clean, 
-                </Text>
-                <Text as={"b"} fontSize={"2xl"} color={"red.400"}>
-                    KHN
-                </Text>
             </HStack>
-            <Text marginBottom={"20px"} as={"b"} fontSize={"15px"} color={"pink.400"}>
-                (Region: LAS)
-            </Text>
             <Text 
                 as={"button"}
                 textDecoration="underline" 
@@ -75,7 +66,7 @@ function DefaultPage() {
                 </VStack>
                 </>
             )}
-            <LegalBoilerplate />
+            <LegalBoilerplate marginTop={100} />
             </VStack>
         </Center>
     );
